@@ -1,0 +1,90 @@
+﻿{
+	"id" : "csharp",
+	"Name" : "C#",
+	"CssClassName" : "csharp",
+	"FirstLinePattern" : "",
+	"Rules" : [
+		{
+			"Regex" : "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/",
+			"Captures" : [{
+				"index" : 0,
+				"name" : "Comment"
+			}]
+		},
+
+		{
+			"Regex" : "(///)(?:\\s*?(<[/a-zA-Z0-9\\s\"\"=]+>))*([^\\r\\n]*)",
+			"Captures" : [{
+				"index" : 1,
+				"name" : "XML Doc Tag"
+			},
+			{
+				"index" : 2,
+				"name" : "XML Doc Tag"
+			},
+			{
+				"index" : 3,
+				"name" : "XML Doc Comment"
+			}]
+		},
+
+		{
+			"Regex" : "(//.*?)\r?$",
+			"Captures" : [{
+				"index" : 1,
+				"name" : "Comment"
+			}]
+		},
+
+		{
+			"Regex" : "'[^\\n]*?(?<!\\\\)'",
+			"Captures" : [{
+				"index" : 0,
+				"name" : "String"
+			}]
+		},
+
+		{
+			"Regex" : "(?s)@\"\"(?:\"\"\"\"|.)*?\"\"(?!\"\")",
+			"Captures" : [{
+				"index" : 0,
+				"name" : "String (C# @ Verbatim)"
+			}]
+		},
+
+		{
+			"Regex" : "(?s)(\"\"[^\\n]*?(?<!\\\\)\"\")",
+			"Captures" : [{
+				"index" : 0,
+				"name" : "String"
+			}]
+		},
+
+		{
+			"Regex" : "\\[(assembly|module|type|return|param|method|field|property|event):[^\\]\"\"]*(\"\"[^\\n]*?(?<!\\\\)\"\")?[^\\]]*\\]",
+			"Captures" : [{
+				"index" : 1,
+				"name" : "Keyword"
+			},{
+				"index" : 2,
+				"name" : "String"
+			}]
+		},
+
+		{
+			"Regex" : "^\\s*(\\#define|\\#elif|\\#else|\\#endif|\\#endregion|\\#error|\\#if|\\#line|\\#pragma|\\#region|\\#undef|\\#warning).*?$",
+			"Captures" : [{
+				"index" : 1,
+				"name" : "PreprocessorKeyword"
+			}]
+		},
+
+		{
+			"Regex" : "\\b(abstract|as|ascending|base|bool|break|by|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|descending|do|double|dynamic|else|enum|equals|event|explicit|extern|false|finally|fixed|float|for|foreach|from|get|goto|group|if|implicit|in|int|into|interface|internal|is|join|let|lock|long|namespace|new|null|object|on|operator|orderby|out|override|params|partial|private|protected|public|readonly|ref|return|sbyte|sealed|select|set|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|var|virtual|void|volatile|where|while|yield)\\b",
+			"Captures" : [{
+				"index" : 1,
+				"name" : "Keyword"
+			}]
+		}
+	]
+}
