@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ColorCode.Formatting;
+﻿using ColorCode.Formatting;
 
 namespace ColorCode
 {
@@ -17,6 +13,6 @@ namespace ColorCode
         /// <remarks>
         /// The default formatter produces HTML with inline styles.
         /// </remarks>
-        public static IFormatter Default { get { return new HtmlFormatter(); } }
+        public static IFormatter Default { get { return new HtmlClassFormatter(); } }
     }
 }

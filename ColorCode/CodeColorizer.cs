@@ -31,7 +31,7 @@ namespace ColorCode
         public CodeColorizer(ILanguageParser languageParser)
         {
             Guard.ArgNotNull(languageParser, "languageParser");
-            
+
             this.languageParser = languageParser;
         }
 
@@ -43,11 +43,16 @@ namespace ColorCode
         /// <returns>The colorized source code.</returns>
         public string Colorize(string sourceCode, ILanguage language)
         {
+            return Colorize(sourceCode, language, Formatters.Default, StyleSheets.Default);
+        }
+
+        public string Colorize(string sourceCode, ILanguage language, IFormatter formatter, IStyleSheet styleSheet)
+        {
             var buffer = new StringBuilder(sourceCode.Length * 2);
 
             using (TextWriter writer = new StringWriter(buffer))
             {
-                Colorize(sourceCode, language, writer);
+                Colorize(sourceCode, language, formatter, styleSheet, writer);
 
                 writer.Flush();
             }
